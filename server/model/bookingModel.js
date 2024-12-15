@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const customerModel = mongoose.Schema({
+const bookingModel = mongoose.Schema({
 	userName: {
 		type: String,
 		required: true,
@@ -17,12 +17,12 @@ const customerModel = mongoose.Schema({
 		type: Number,
 		required: true,
 	},
-	package: {
+	selectedPackage: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Package",
 	},
 });
 
-const Customer = mongoose.model("Customer", customerModel);
+const Booking = mongoose.model("Booking", bookingModel);
 
-export default Customer;
+export default Booking;
