@@ -26,6 +26,4 @@ app.use("/bookings", bookingRoutes);
 app.use("/auth", authRoutes);
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
-app.listen(process.env.PORT, () => {
-	console.log("app is running in port " + process.env.PORT);
-});
+export default app;
