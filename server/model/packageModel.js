@@ -18,10 +18,10 @@ const packageModel = mongoose.Schema({
 			type: Date,
 		},
 	],
-	imageURL: {
+	/* imageURL: {
 		type: String,
 		required: true,
-	},
+	}, */
 });
 
 const Package = mongoose.model("Package", packageModel);

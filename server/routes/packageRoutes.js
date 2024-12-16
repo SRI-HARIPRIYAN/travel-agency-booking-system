@@ -4,3 +4,5 @@ const router = express.Router();
 
 router.route("/").get(getPackages);
 router.route("/:id").get(getPackage);
+
+export default router;

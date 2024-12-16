@@ -43,10 +43,11 @@ export const PackageProvider = ({ children }) => {
 	const createPackage = async (packageData) => {
 		try {
 			setLoading(true);
-			const response = await fetch("/api/packages", {
+			const response = await fetch("/api/admin/packages", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(packageData),
+				credentials: "include",
 			});
 			const data = await response.json();
 			if (!response.ok) {
@@ -117,6 +118,6 @@ export const PackageProvider = ({ children }) => {
 	);
 };
 
-export default usePackage = () => {
+export const usePackage = () => {
 	return useContext(PackageContext);
 };

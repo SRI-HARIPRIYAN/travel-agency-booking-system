@@ -1,43 +1,47 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
-const UserContext = createContext();
+const AuthContext = createContext();
 
-export const UserProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(false);
-	const signup = async (userName, email, password) => {
+	const signup = async (formData) => {
 		try {
 			setLoading(true);
 			const response = await fetch("/api/auth/signup", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ userName, email, password }),
+				body: JSON.stringify(formData),
+				credentials: "include",
 			});
 			const data = await response.json();
 			if (!response.ok) {
 				throw new Error(data.message || data.error);
 			}
 			setUser(data);
+			localStorage.setItem("user", JSON.stringify(data));
 			toast.success(data.message);
 		} catch (error) {
-			toast.error(error);
+			toast.error(error.message || error.error);
 		} finally {
 			setLoading(false);
 		}
 	};
-	const login = async (userName, password) => {
+	const login = async (formData) => {
 		try {
 			setLoading(true);
 			const response = await fetch("/api/auth/login", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ userName, password }),
+				body: JSON.stringify(formData),
+				credentials: "include",
 			});
 			const data = await response.json();
 			if (!response.ok) {
 				throw new Error(data.message || data.error);
 			}
 			setUser(data);
+			localStorage.setItem("user", JSON.stringify(data));
 			toast.success(data.message);
 		} catch (error) {
 			toast.error(error);
@@ -57,6 +61,8 @@ export const UserProvider = ({ children }) => {
 			if (!response.ok) {
 				throw new Error(data.message || data.error);
 			}
+			setUser(null);
+			localStorage.removeItem("user");
 			toast.success(data.message);
 		} catch (error) {
 			toast.error(error);
@@ -72,13 +78,21 @@ export const UserProvider = ({ children }) => {
 		loading,
 		user,
 	};
+
+	useEffect(() => {
+		const data = localStorage.getItem("user")
+			? JSON.parse(localStorage.getItem("user"))
+			: null;
+		setUser(data);
+	}, []);
+
 	return (
-		<UserContext.Provider value={userValue}>
+		<AuthContext.Provider value={userValue}>
 			{children}
-		</UserContext.Provider>
+		</AuthContext.Provider>
 	);
 };
 
-export default useAuth = () => {
-	return useContext(UserContext);
+export const useAuth = () => {
+	return useContext(AuthContext);
 };

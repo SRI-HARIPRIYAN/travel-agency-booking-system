@@ -1,4 +1,4 @@
-import Package from "../model/packageModel";
+import Package from "../model/packageModel.js";
 const getPackages = async (req, res) => {
 	try {
 		const packages = await Package.find({}).select(
