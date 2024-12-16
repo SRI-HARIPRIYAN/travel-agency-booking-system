@@ -12,7 +12,7 @@ const app = express();
 
 app.use(
 	cors({
-		origin: ["http://localhost:3000"],
+		origin: ["https://travel-agency-booking-system-ones-client.vercel.app"],
 		methods: ["GET", "POST", "PUT", "DELETE"],
 	})
 );
