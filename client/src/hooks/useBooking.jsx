@@ -1,10 +1,12 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const BookingContext = createContext();
 
 export const BookingProvider = ({ children }) => {
 	const [booking, setBooking] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 	const bookPackage = async (bookingData) => {
 		try {
 			setLoading(true);
@@ -18,7 +20,8 @@ export const BookingProvider = ({ children }) => {
 				throw new Error(data.message || data.error);
 			}
 			setBooking(data);
-			toast.success(data.message);
+			toast.success("Package Booked Successfully");
+			navigate("/packages");
 		} catch (error) {
 			toast.error(error.message);
 		} finally {

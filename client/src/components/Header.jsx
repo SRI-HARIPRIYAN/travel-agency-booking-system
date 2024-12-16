@@ -4,18 +4,18 @@ import { useAuth } from "../hooks/useAuth";
 const Header = () => {
 	const { logout, loading, user } = useAuth();
 	return (
-		<header className="bg-[#FFC107] text-white ">
+		<header className=" bg-gradient-to-r from-[#FFD107] to-[#FFB107] text-white ">
 			<div className="container mx-auto flex items-center justify-between py-4 px-6">
-				<h1 className="text-2xl text-white font-bold">GoEase</h1>
+				<h1 className="text-2xl text-black font-bold">GoEase</h1>
 				<div className="flex items-center space-x-4">
 					{user ? (
-						<div>
+						<div className="text-black">
 							<p className="text-sm">Welcome, {user.userName}</p>
 							<button
 								onClick={() => {
 									logout();
 								}}
-								className="text-sm bg-white text-blue-600  px-4 py-1 rounded hover:bg-blue-300 hover:text-white transition"
+								className="text-sm bg-white text-black  px-4 py-1 rounded hover:bg-blue-300 hover:text-white transition"
 							>
 								Logout
 							</button>
@@ -23,7 +23,7 @@ const Header = () => {
 					) : (
 						<Link
 							to={"/login"}
-							className="text-sm bg-white text-blue-600 px-4 py-1 rounded hover:bg-gray-100 transition"
+							className="text-sm bg-white text-black px-4 py-1 rounded hover:bg-gray-100 transition"
 						>
 							Login
 						</Link>
@@ -31,17 +31,23 @@ const Header = () => {
 				</div>
 			</div>
 
-			<nav className="bg-blue-700">
-				<div className="container mx-auto flex flex-wrap items-center justify-center space-x-6 py-2 px-6 text-sm">
-					<Link to="/" className="hover:underline">
+			<nav className="bg-gradient-to-r from-[#FFE107] to-[#FFC107] border-t-2 text-black">
+				<div className="container mx-auto flex  items-center justify-center space-x-6 py-2 px-6 text-sm">
+					<Link
+						to="/"
+						className=" px-2 hover:text-white py-0.5 rounded-sm transition"
+					>
 						Home
 					</Link>
-					<Link to="/packages" className="hover:underline">
+					<Link
+						to="/packages"
+						className=" px-2 hover:text-white py-0.5 rounded-sm transition"
+					>
 						Destinations
 					</Link>
 					{user && (
 						<Link
-							className=" active:bg-green-400"
+							className="  mx-auto  px-2 hover:text-white py-0.5 rounded-sm transition "
 							to="/admin/dashboard"
 						>
 							Dashboard

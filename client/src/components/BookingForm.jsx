@@ -19,12 +19,11 @@ const BookingForm = ({ selectedPackage }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log({ ...formData, selectedPackage });
 		bookPackage({ ...formData, selectedPackage });
 	};
 
 	return (
-		<div className="flex justify-center items-center min-h-screen  p-4 ">
+		<div className="flex justify-center items-center   p-4 ">
 			<form
 				onSubmit={handleSubmit}
 				className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md"
@@ -33,7 +32,6 @@ const BookingForm = ({ selectedPackage }) => {
 					Book Your Package
 				</h2>
 
-				{/* User Name */}
 				<div className="pb-4">
 					<label
 						className="block text-gray-700 font-semibold pb-2"

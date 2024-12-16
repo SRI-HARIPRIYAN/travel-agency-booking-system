@@ -16,13 +16,13 @@ const PackageCard = ({
 	};
 	const navigate = useNavigate();
 	return (
-		<div className="max-w-sm bg-white rounded-lg hover:bg-gray-100 shadow-md overflow-hidden">
+		<div className="max-w-sm  h-[500px] bg-white rounded-lg hover:bg-gray-100 shadow-md overflow-hidden">
 			<img
 				className="w-full h-48 object-cover"
 				src={pkg.image}
 				alt={`${pkg.title} Image`}
 			/>
-			<div className="p-4">
+			<div className="p-4 flex flex-col justify-between">
 				<h2 className="text-xl font-bold text-gray-800 mb-2">
 					{pkg.title}
 				</h2>
@@ -33,7 +33,7 @@ const PackageCard = ({
 				<div className="text-gray-700 text-sm">
 					<span className="font-medium">Available Dates:</span>
 					{pkg?.availableDates.length > 0 ? (
-						<ul className="list-disc list-inside ml-2 mt-2">
+						<ul className="list-disc h-[80px] overflow-y-scroll  list-inside ml-2 mt-2">
 							{pkg?.availableDates?.map((date, index) => (
 								<li key={index}>
 									{new Date(date).toLocaleDateString()}
@@ -46,7 +46,7 @@ const PackageCard = ({
 				</div>
 
 				{user?.isAdmin ? (
-					<div className="flex items-center justify-center gap-5">
+					<div className="flex items-center justify-around ">
 						<Link
 							to={`/packages/update/${pkg._id}`}
 							className="mt-4 w-fit bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 transition"
@@ -55,7 +55,7 @@ const PackageCard = ({
 						</Link>
 						<button
 							onClick={handleDelete}
-							className="mt-4 w-fit bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition"
+							className="mt-4 w-fit bg-red-700 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition"
 						>
 							Delete
 						</button>

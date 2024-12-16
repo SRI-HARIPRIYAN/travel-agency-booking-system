@@ -19,11 +19,11 @@ const BookingScreen = () => {
 			<Header />
 			<div className="w-full flex flex-col justify-center bg-gradient-to-r from-blue-50 to-blue-200">
 				<div className="w-[90%] max-w-[400px] bg-white rounded-lg mt-4 mx-auto hover:bg-gray-100 shadow-md overflow-hidden">
-					{/* <img
-                    className="w-full h-48 object-cover"
-                    src={imageURL}
-                    alt={`${packageData.title} Image`}
-                /> */}
+					<img
+						className="w-full h-48 object-cover"
+						src={packageData.image}
+						alt={`${packageData.title} Image`}
+					/>
 					<div className="p-4">
 						<h2 className="text-xl font-bold text-gray-800 mb-2">
 							{packageData.title}
