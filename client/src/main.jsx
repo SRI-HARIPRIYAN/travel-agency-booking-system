@@ -9,15 +9,15 @@ import { BookingProvider } from "./hooks/useBooking.jsx";
 import { PackageProvider } from "./hooks/usePackage.jsx";
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<AuthProvider>
-			<PackageProvider>
-				<BookingProvider>
-					<BrowserRouter>
+		<BrowserRouter>
+			<AuthProvider>
+				<PackageProvider>
+					<BookingProvider>
 						<App />
 						<ToastContainer />
-					</BrowserRouter>
-				</BookingProvider>
-			</PackageProvider>
-		</AuthProvider>
+					</BookingProvider>
+				</PackageProvider>
+			</AuthProvider>
+		</BrowserRouter>
 	</StrictMode>
 );

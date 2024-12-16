@@ -4,8 +4,10 @@ import HomeScreen from "./pages/HomeScreen.jsx";
 import SignupScreen from "./pages/SignupScreen";
 import LoginScreen from "./pages/LoginScreen.jsx";
 import AdminRoute from "./admin/adminRoutes.jsx";
-import PackageScreen from "./pages/package/PackageScreen.jsx";
+import PackagesScreen from "./pages/package/PackagesScreen.jsx";
 import createPackageScreen from "./pages/package/CreatePackageScreen.jsx";
+import PackageScreen from "./pages/package/PackageScreen.jsx";
+
 const App = () => {
 	return (
 		<Routes>
@@ -13,7 +15,8 @@ const App = () => {
 			<Route path="*" element={<HomeScreen />} />
 			<Route path="/login" element={<LoginScreen />} />
 			<Route path="/signup" element={<SignupScreen />} />
-			<Route path="/packages/all" element={<PackageScreen />} />
+			<Route path="/packages" element={<PackagesScreen />} />
+			<Route path="/packages/:id" element={<PackageScreen />} />
 
 			{/* admin routes only */}
 			<Route

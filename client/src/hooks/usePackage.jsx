@@ -1,10 +1,12 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const PackageContext = createContext();
 
 export const PackageProvider = ({ children }) => {
 	const [packages, setPackages] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 	const getPackages = async () => {
 		try {
 			setLoading(true);
@@ -55,6 +57,8 @@ export const PackageProvider = ({ children }) => {
 			}
 			getPackages();
 			toast.success(data.message);
+			toast.success("Package created successfully");
+			navigate("/");
 		} catch (error) {
 			toast.error(error);
 		} finally {
@@ -111,6 +115,11 @@ export const PackageProvider = ({ children }) => {
 		updatePackage,
 		deletePackage,
 	};
+
+	useEffect(() => {
+		getPackages();
+	}, []);
+
 	return (
 		<PackageContext.Provider value={packageValue}>
 			{children}
