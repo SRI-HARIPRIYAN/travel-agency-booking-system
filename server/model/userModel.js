@@ -16,7 +16,7 @@ const userModel = new mongoose.Schema({
 	},
 	isAdmin: {
 		type: Boolean,
-		default: true,
+		default: false,
 	},
 });
 userModel.pre("save", async function (next) {
