@@ -1,6 +1,7 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../../config";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -10,7 +11,7 @@ export const AuthProvider = ({ children }) => {
 	const signup = async (formData) => {
 		try {
 			setLoading(true);
-			const response = await fetch("/api/auth/signup", {
+			const response = await fetch(`${API_BASE_URL}/auth/signup`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(formData),
@@ -33,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 	const login = async (formData) => {
 		try {
 			setLoading(true);
-			const response = await fetch("/api/auth/login", {
+			const response = await fetch(`${API_BASE_URL}/auth/login`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(formData),
@@ -56,7 +57,7 @@ export const AuthProvider = ({ children }) => {
 	const logout = async () => {
 		try {
 			setLoading(true);
-			const response = await fetch("/api/auth/logout", {
+			const response = await fetch(`${API_BASE_URL}/auth/logout`, {
 				method: "POST",
 				credentials: "include",
 			});

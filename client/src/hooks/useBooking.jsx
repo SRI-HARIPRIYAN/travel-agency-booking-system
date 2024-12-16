@@ -1,6 +1,7 @@
 import { useContext, createContext, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../../config";
 const BookingContext = createContext();
 
 export const BookingProvider = ({ children }) => {
@@ -10,7 +11,7 @@ export const BookingProvider = ({ children }) => {
 	const bookPackage = async (bookingData) => {
 		try {
 			setLoading(true);
-			const response = await fetch("/api/bookings", {
+			const response = await fetch(`${API_BASE_URL}/bookings`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(bookingData),
@@ -31,7 +32,7 @@ export const BookingProvider = ({ children }) => {
 	const getBookings = async () => {
 		try {
 			setLoading(true);
-			const response = await fetch("/api/bookings", {
+			const response = await fetch(`${API_BASE_URL}/bookings`, {
 				method: "GET",
 				credentials: "include",
 			});
