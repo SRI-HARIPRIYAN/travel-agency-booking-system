@@ -22,7 +22,11 @@ const createBooking = async (req, res) => {
 			no_of_travellers,
 			selectedPackage,
 		});
-		res.status(201).json(newBooking);
+		const bookingDetails = await Booking.findById(newBooking._id).populate(
+			"selectedPackage",
+			"title description price"
+		);
+		res.status(201).json(bookingDetails);
 	} catch (error) {
 		return res.status(500).json({ error: "Internal server error" });
 	}

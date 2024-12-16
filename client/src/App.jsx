@@ -6,10 +6,10 @@ import LoginScreen from "./pages/LoginScreen.jsx";
 import AdminRoute from "./admin/adminRoutes.jsx";
 import PackagesScreen from "./pages/package/PackagesScreen.jsx";
 import createPackageScreen from "./pages/package/CreatePackageScreen.jsx";
-import Booking from "./pages/BookingScreen.jsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
 import UpdatePackage from "./pages/UpdatePackageScreen.jsx";
 import BookingScreen from "./pages/BookingScreen.jsx";
+import Invoice from "./pages/Invoice.jsx";
 
 const App = () => {
 	return (
@@ -20,6 +20,7 @@ const App = () => {
 			<Route path="/signup" element={<SignupScreen />} />
 			<Route path="/packages" element={<PackagesScreen />} />
 			<Route path="/packages/:id/book" element={<BookingScreen />} />
+			<Route path="/bookings/invoice" element={<Invoice />} />
 
 			{/* admin routes */}
 			<Route
