@@ -20,11 +20,11 @@ connectToDb();
 app.use(express.json());
 app.use(cookieParser());
 app.use(urlencoded({ extended: true }));
-
 app.use("/packages", packageRoutes);
 app.use("/admin", adminRoutes);
 app.use("/bookings", bookingRoutes);
 app.use("/auth", authRoutes);
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
 app.listen(process.env.PORT, () => {
 	console.log("app is running in port " + process.env.PORT);
