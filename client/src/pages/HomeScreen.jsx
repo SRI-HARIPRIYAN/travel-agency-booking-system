@@ -3,11 +3,9 @@ import Header from "../components/Header";
 import { Link } from "react-router-dom";
 const HomeScreen = () => {
 	return (
-		<div>
+		<div className="flex flex-col justify-between min-h-screen bg-gradient-to-r from-blue-50 to-blue-100">
 			<Header />
-
-			<main className="bg-gray-50 text-gray-800">
-				{/* Hero Section */}
+			<main className="bg-gray-50 text-gray-800 ">
 				<section className="bg-gradient-to-r from-blue-50 to-blue-100 py-20 lg:py-24">
 					<div className="container mx-auto text-center px-6">
 						<h1 className="text-4xl md:text-5xl font-extrabold text-pink-600">

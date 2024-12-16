@@ -31,7 +31,7 @@ const newPackage = async (req, res) => {
 			description: req.body.description,
 			price: req.body.price,
 			availableDates: req.body.availableDates,
-			imageURL: req.body.imageURL,
+			image: req.body.image,
 		});
 
 		if (packageCreated) {
@@ -45,6 +45,7 @@ const newPackage = async (req, res) => {
 				.json({ error: "Error creating new Package try again later" });
 		}
 	} catch (error) {
+		console.log("error in create package controller", error);
 		return res.status(500).json({ error: "Internal server error" });
 	}
 };
@@ -60,7 +61,7 @@ const updatePackage = async (req, res) => {
 
 		if (updatedPackage) {
 			res.status(201).json({
-				message: "Created successfully",
+				message: "updated successfully",
 				updatedPackage,
 			});
 		} else {

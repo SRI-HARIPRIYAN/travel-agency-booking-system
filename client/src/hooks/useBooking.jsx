@@ -1,4 +1,4 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 const BookingContext = createContext();
 
@@ -20,6 +20,24 @@ export const BookingProvider = ({ children }) => {
 			setBooking(data);
 			toast.success(data.message);
 		} catch (error) {
+			toast.error(error.message);
+		} finally {
+			setLoading(false);
+		}
+	};
+	const getBookings = async () => {
+		try {
+			setLoading(true);
+			const response = await fetch("/api/bookings", {
+				method: "GET",
+				credentials: "include",
+			});
+			const data = await response.json();
+			if (!response.ok) {
+				throw new Error(data.message || data.error);
+			}
+			return data;
+		} catch (error) {
 			toast.error(error);
 		} finally {
 			setLoading(false);
@@ -30,6 +48,7 @@ export const BookingProvider = ({ children }) => {
 		bookPackage,
 		loading,
 		booking,
+		getBookings,
 	};
 	return (
 		<BookingContext.Provider value={bookingValue}>

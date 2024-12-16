@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks/useAuth.jsx";
 import Spinner from "../components/Spinner.jsx";
+import { Link } from "react-router-dom";
 const LoginScreen = () => {
 	const { login, loading } = useAuth();
 
@@ -77,6 +78,17 @@ const LoginScreen = () => {
 						Login
 					</button>
 				</form>
+				<div className="text-center">
+					Don't have an account?{" "}
+					<span>
+						<Link
+							className=" text-pink-500 font-semibold cursor-pointer"
+							to="/signup"
+						>
+							Signup
+						</Link>
+					</span>
+				</div>
 			</div>
 		</div>
 	);

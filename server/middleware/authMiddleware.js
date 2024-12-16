@@ -11,7 +11,6 @@ export const protect = async (req, res, next) => {
 
 	try {
 		const decoded = jwt.verify(token, process.env.COOKIE_SECRET);
-		console.log(decoded);
 		const userExists = await User.findById(decoded.userId);
 
 		if (!userExists) {

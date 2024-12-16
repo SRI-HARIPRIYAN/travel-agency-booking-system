@@ -79,6 +79,7 @@ export const PackageProvider = ({ children }) => {
 			}
 			getPackages();
 			toast.success(data.message);
+			navigate("/packages");
 		} catch (error) {
 			toast.error(error);
 		} finally {
@@ -100,6 +101,7 @@ export const PackageProvider = ({ children }) => {
 			}
 			getPackages();
 			toast.success(data.message);
+			navigate("/packages");
 		} catch (error) {
 			toast.error(error);
 		} finally {

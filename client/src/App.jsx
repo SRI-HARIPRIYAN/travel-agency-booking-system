@@ -6,7 +6,10 @@ import LoginScreen from "./pages/LoginScreen.jsx";
 import AdminRoute from "./admin/adminRoutes.jsx";
 import PackagesScreen from "./pages/package/PackagesScreen.jsx";
 import createPackageScreen from "./pages/package/CreatePackageScreen.jsx";
-import PackageScreen from "./pages/package/PackageScreen.jsx";
+import Booking from "./pages/BookingScreen.jsx";
+import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
+import UpdatePackage from "./pages/UpdatePackageScreen.jsx";
+import BookingScreen from "./pages/BookingScreen.jsx";
 
 const App = () => {
 	return (
@@ -16,13 +19,26 @@ const App = () => {
 			<Route path="/login" element={<LoginScreen />} />
 			<Route path="/signup" element={<SignupScreen />} />
 			<Route path="/packages" element={<PackagesScreen />} />
-			<Route path="/packages/:id" element={<PackageScreen />} />
+			<Route path="/packages/:id/book" element={<BookingScreen />} />
 
-			{/* admin routes only */}
+			{/* admin routes */}
 			<Route
-				path="/newpackage"
+				path="/packages/update/:id"
+				element={<AdminRoute element={UpdatePackage} />}
+			/>
+			<Route
+				path="newpackage"
 				element={<AdminRoute element={createPackageScreen} />}
 			/>
+			<Route
+				path="/admin"
+				element={<AdminRoute element={AdminDashboard} />}
+			>
+				<Route
+					path="dashboard"
+					element={<AdminRoute element={AdminDashboard} />}
+				/>
+			</Route>
 		</Routes>
 	);
 };

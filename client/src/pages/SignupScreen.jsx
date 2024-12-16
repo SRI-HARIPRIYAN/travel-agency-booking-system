@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks/useAuth.jsx";
 import Spinner from "../components/Spinner.jsx";
+import { Link } from "react-router-dom";
 const SignupScreen = () => {
 	const { signup, loading } = useAuth();
 	const [formData, setFormData] = useState({
@@ -94,6 +95,17 @@ const SignupScreen = () => {
 						Sign Up
 					</button>
 				</form>
+				<div className="text-center">
+					Already a user?{" "}
+					<span>
+						<Link
+							className=" text-pink-500 font-semibold cursor-pointer"
+							to="/login"
+						>
+							Login
+						</Link>
+					</span>
+				</div>
 			</div>
 		</div>
 	);

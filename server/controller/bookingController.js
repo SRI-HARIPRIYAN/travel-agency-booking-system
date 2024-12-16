@@ -27,4 +27,18 @@ const createBooking = async (req, res) => {
 		return res.status(500).json({ error: "Internal server error" });
 	}
 };
-export { createBooking };
+const getBookings = async (req, res) => {
+	try {
+		const bookings = await Booking.find()
+			.populate("selectedPackage", "title price")
+			.sort({ createdAt: -1 });
+		console.log(bookings);
+		res.status(201).json(bookings);
+	} catch (error) {
+		return res
+			.status(500)
+			.json({ message: "Internal server error", error });
+	}
+};
+
+export { createBooking, getBookings };

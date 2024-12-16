@@ -1,8 +1,10 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+	const navigate = useNavigate();
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const signup = async (formData) => {
@@ -21,6 +23,7 @@ export const AuthProvider = ({ children }) => {
 			setUser(data);
 			localStorage.setItem("user", JSON.stringify(data));
 			toast.success(data.message);
+			navigate("/");
 		} catch (error) {
 			toast.error(error.message || error.error);
 		} finally {
@@ -42,7 +45,8 @@ export const AuthProvider = ({ children }) => {
 			}
 			setUser(data);
 			localStorage.setItem("user", JSON.stringify(data));
-			toast.success(data.message);
+			toast.success("logged in successfully");
+			navigate("/");
 		} catch (error) {
 			toast.error(error);
 		} finally {
@@ -63,7 +67,8 @@ export const AuthProvider = ({ children }) => {
 			}
 			setUser(null);
 			localStorage.removeItem("user");
-			toast.success(data.message);
+			toast.success("logged out successfully");
+			navigate("/");
 		} catch (error) {
 			toast.error(error);
 		} finally {

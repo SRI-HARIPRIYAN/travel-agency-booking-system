@@ -10,6 +10,7 @@ const Spinner = () => {
 				width="96"
 				color="blue"
 				strokeWidth="5"
+				secondaryColor="transparent"
 				animationDuration="0.75"
 				ariaLabel="rotating-lines-loading"
 				wrapperStyle={{}}

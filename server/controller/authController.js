@@ -44,7 +44,7 @@ const login = async (req, res) => {
 				isAdmin: user.isAdmin,
 			});
 		} else {
-			res.status(401).json({ error: "invalid credentials" });
+			res.status(400).json({ error: "invalid credentials" });
 		}
 	} catch (error) {
 		console.log("error in login controller");
