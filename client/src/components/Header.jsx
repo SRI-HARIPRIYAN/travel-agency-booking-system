@@ -45,7 +45,7 @@ const Header = () => {
 					>
 						Destinations
 					</Link>
-					{user && (
+					{user && user?.isAdmin &&(
 						<Link
 							className="  mx-auto  px-2 hover:text-white py-0.5 rounded-sm transition "
 							to="/admin/dashboard"
