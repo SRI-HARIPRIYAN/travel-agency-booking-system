@@ -14,6 +14,7 @@ app.use(
 	cors({
 		origin: ["https://travel-agency-booking-system-ones-client.vercel.app"],
 		methods: ["GET", "POST", "PUT", "DELETE"],
+		credentials:true
 	})
 );
 connectToDb();
