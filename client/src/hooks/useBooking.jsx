@@ -1,7 +1,7 @@
 import { useContext, createContext, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import API_BASE_URL from "../../config";
+import API_BASE_URL from "../../config.js";
 const BookingContext = createContext();
 
 export const BookingProvider = ({ children }) => {
