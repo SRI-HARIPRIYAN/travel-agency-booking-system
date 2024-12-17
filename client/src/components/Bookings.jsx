@@ -47,7 +47,7 @@ const Bookings = () => {
 							</tr>
 						</thead>
 						<tbody>
-							{bookings.map((booking) => (
+							{bookings?.map((booking) => (
 								<tr
 									key={booking._id}
 									className="hover:bg-gray-100"
@@ -75,7 +75,7 @@ const Bookings = () => {
 						</tbody>
 					</table>
 				</div>
-				{bookings.length === 0 && (
+				{bookings>.length === 0 && (
 					<div className="text-center text-gray-500 mt-4">
 						No bookings found.
 					</div>
