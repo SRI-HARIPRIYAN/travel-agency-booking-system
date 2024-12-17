@@ -42,7 +42,7 @@ const AdminDashboard = () => {
 					</h2>
 					{packages.length > 0 ? (
 						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-							{packages.map((pkg) => (
+							{packages?.map((pkg) => (
 								<div
 									key={pkg._id}
 									className="border rounded-lg shadow-sm p-4 hover:shadow-md transition"
@@ -62,7 +62,7 @@ const AdminDashboard = () => {
 										</span>
 										{pkg.availableDates.length > 0 ? (
 											<ul className="list-disc list-inside ml-2">
-												{pkg.availableDates.map(
+												{pkg.availableDates?.map(
 													(date, index) => (
 														<li key={index}>
 															{new Date(
