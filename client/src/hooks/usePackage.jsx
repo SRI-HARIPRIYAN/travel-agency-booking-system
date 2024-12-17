@@ -1,7 +1,7 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import API_BASE_URL from "../../config";
+import API_BASE_URL from "../../config.js";
 const PackageContext = createContext();
 
 export const PackageProvider = ({ children }) => {
